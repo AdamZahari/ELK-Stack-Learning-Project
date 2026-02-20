@@ -78,3 +78,24 @@ curl -u elastic https://localhost:9200/_cluster/health?pretty
 
 Also verified in Kibana under:
 Stack Management → Monitoring
+
+---
+
+## Cluster Health Result
+
+After all three nodes were started, cluster health was immediately verified.
+
+Result:
+
+- Status: green
+- Number of nodes: 3
+- No unassigned shards
+- Replica shards allocated successfully
+
+This confirms that:
+- Node discovery worked correctly
+- Enrollment token method configured TLS properly
+- Inter-node communication is functioning
+- Replica allocation is healthy
+
+The cluster reached green state without manual shard adjustment.
