@@ -29,7 +29,52 @@ To allow other nodes to join the cluster, an enrollment token was generated on N
 
 ```bash
 sudo /usr/share/elasticsearch/bin/elasticsearch-create-enrollment-token -s node
+```
 
 ---
 
-## Adding Node 2 (Ubuntu Server)
+## Adding Node 2
+Operating System: Ubuntu Server
+
+### Step 1 - Install Elasticsearch
+
+Elasticsearch was installed normally 
+
+### Step 2 - Join cluster using enrollment token
+
+The generated token from Node 1 was used during setup:
+
+```bash
+sudo /usr/share/elasticsearch/bin/elasticsearch-reconfigure-node --enrollment-token <token>
+```
+
+After configuration:
+
+```bash
+sudo systemctl start elasticsearch
+```
+
+Node successfully join the cluster
+
+---
+
+## Adding Node 3
+Operating System: Rocky Server
+
+The same process was repeated:
+1. Install Elasticsearch
+2. Use enrollment token from Node 1
+3. Start Elasticsearch service
+
+Node successfully joined the cluster
+
+---
+
+## Cluster Verification
+Cluster health was verified using:
+```bash
+curl -u elastic https://localhost:9200/_cluster/health?pretty
+```
+
+Also verified in Kibana under:
+Stack Management → Monitoring
