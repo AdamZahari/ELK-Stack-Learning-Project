@@ -32,9 +32,9 @@ This lab is built entirely on PCs and serves as a hands-on platform for learning
 Cluster Name: my-application
 
 Nodes:
-- node-1 (master eligible)
-- node-2
-- node-3
+- node-1 (master, data)
+- node-2 (master, data)
+- node-3 (master, data)
 
 Cluster Type:
 - 3-node distributed cluster
@@ -49,10 +49,11 @@ Cluster Type:
 - Installed on all three nodes
 - Configured for cluster discovery
 - Nodes joined using cluster.initial_master_nodes
+    - then removed, as it was used for bootstrap only
 - Verified using cluster health API
 
 ### Kibana
-- Installed on 1 dedicated PC
+- Installed on 1 of elasticsearch node
 - Connected to Elasticsearch cluster
 - Used for:
   - Stack Monitoring
@@ -60,7 +61,7 @@ Cluster Type:
   - Fleet Management
 
 ### Fleet Server
-- Installed and enrolled
+- Will be installed and enrolled
 - Used to manage Elastic Agents
 
 ### Elastic Agent
